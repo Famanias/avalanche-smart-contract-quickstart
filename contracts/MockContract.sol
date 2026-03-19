@@ -421,7 +421,10 @@ contract MockContract is MockInterface {
     ] += 1;
   }
 
-  fallback() external payable {
+  // Shared logic for both `receive()` (no calldata) and `fallback()` (arbitrary calldata).
+  // This keeps mock behavior consistent and avoids the Solidity warning about a payable fallback
+  // without a dedicated receive function.
+  function _mockFallback() internal {
     bytes4 methodId;
     assembly {
       methodId := calldataload(0)
@@ -471,5 +474,13 @@ contract MockContract is MockInterface {
     assembly {
       return(add(0x20, result), mload(result))
     }
+  }
+
+  receive() external payable {
+    _mockFallback();
+  }
+
+  fallback() external payable {
+    _mockFallback();
   }
 }

@@ -51,6 +51,10 @@ export default {
       },
       {
         version: "0.8.0"
+      },
+      {
+        // Needed because the installed OpenZeppelin contracts use `^0.8.1`
+        version: "0.8.1"
       }
     ]
   },
@@ -81,13 +85,16 @@ export default {
       url: 'https://api.avax-test.network/ext/bc/C/rpc',
       gasPrice: 225000000000,
       chainId: 43113,
-      accounts: []
+      // Provide your signing key via environment variable to avoid committing secrets.
+      // Example: `export FUJI_PRIVATE_KEY=0xabc...`
+      accounts: process.env.FUJI_PRIVATE_KEY ? [process.env.FUJI_PRIVATE_KEY] : []
     },
     mainnet: {
       url: 'https://api.avax.network/ext/bc/C/rpc',
       gasPrice: 225000000000,
       chainId: 43114,
-      accounts: []
+      // Example: `export MAINNET_PRIVATE_KEY=0xabc...`
+      accounts: process.env.MAINNET_PRIVATE_KEY ? [process.env.MAINNET_PRIVATE_KEY] : []
     }
   }
 }
