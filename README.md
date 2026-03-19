@@ -31,7 +31,7 @@ It is also helpful to have a basic understanding of [Solidity](https://docs.soli
 Clone the [quickstart repository](https://github.com/ava-labs/avalanche-smart-contract-quickstart) and install the necessary packages via `yarn`.
 
 ```zsh
-$ git clone https://github.com/ava-labs/avalanche-smart-contract-quickstart.git
+$ git clone https://github.com/avalanche-team1-philippines/avalanche-smart-contract-quickstart.git
 $ cd avalanche-smart-contract-quickstart
 $ yarn
 ```
